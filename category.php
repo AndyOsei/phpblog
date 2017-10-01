@@ -7,6 +7,13 @@
   $id = $_GET['id'];
   $query = "SELECT * FROM posts WHERE category_id = '$id' ";
   $posts = $db->select($query);
+
+  $category = "SELECT * FROM categories WHERE category_id = '$id' ";
+  $category_name = $db->select($category);
+  $title = $category_name->fetch_array();
+
+
+
   
 ?>
 <!DOCTYPE html>
@@ -63,8 +70,13 @@
           </div><!-- /.blog-post -->
         <?php endwhile; ?>
 
-        </div><!-- /.blog-main -->
-       
+           <?php if($posts->num_rows == 0): ?>
+               <div class="blog-post">
+                   <h2 class="blog-post-title" style="color: #3b5998"><i>We are sorry. There are no post on <?php echo $title['title'];?> yet !!</i> </h2>
+               </div><!-- /.blog-main -->
+           <?php endif; ?>
+       </div>
+
       <?php
         include "includes/sidebar.php";
         include "includes/footer.php";

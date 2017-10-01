@@ -1,3 +1,8 @@
+<?php session_start();
+if(!isset($_SESSION['user_id'])){
+    header("Location: login.php");
+}
+?>
 <?php
 include "../assets/libs/config.php";
 include "../assets/libs/database.php";
@@ -49,6 +54,7 @@ if (isset($_POST['submit'])){
             <a class="nav-link" href="index.php">Dashboard</a>
             <a class="nav-link" href="add_post.php">Add New Post</a>
             <a class="nav-link active" href="add_category.php">Add New Category</a>
+            <a class="nav-link " href="add_user.php">Add User</a>
             <a class="nav-link pull-right" href="../index.php" target="_blank">View Blog</a>
             <a class="nav-link pull-right" href="logout.php">Log Out</a>
         </nav>

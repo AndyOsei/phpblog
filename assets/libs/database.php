@@ -24,11 +24,8 @@ class Database
 
 		$result = $this->link->query($query);
 
-		if($result->num_rows > 0) {
-			return $result;
-		}else {
-			return false;
-		}
+		return $result;
+
 	}
 
 	public function insert($query) {

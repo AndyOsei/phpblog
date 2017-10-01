@@ -21,6 +21,13 @@ $delete = $_POST['name'];
         if($run){
             echo 'http://localhost/phpblog/admin/index.php';
         }
+    }else if($delete == "User"){
+        $id = $_POST['id'];
+        $query = "DELETE FROM users WHERE user_id = '$id'";
+        $run = $db->delete($query);
+        if($run){
+            echo 'http://localhost/phpblog/admin/index.php';
+        }
     }
 
 

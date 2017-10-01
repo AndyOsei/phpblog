@@ -70,7 +70,7 @@ if(isset($_POST['post']) ){
                     <h4 class="modal-title" style="text-align: center">Edit Posts</h4>
                 </div>
                 <div class="modal-body">
-                    <form class="form" role="form" method="get" >
+                    <form class="form" role="form" method="" enctype="multipart/form-data" >
                         <input type="hidden" name="updatePost" value="">
                         <input type="hidden" name="post_id" value="<?php echo $row1['post_id'];?>">
 
@@ -96,19 +96,87 @@ if(isset($_POST['post']) ){
 										<span class="input-group-addon">
 											<i class="material-icons">account_balance</i>
 										</span>
-                                <textarea name="content" rows="6" cols="40"><?php echo $row1['content'];?></textarea>
+                                <input type="text" value="<?php echo $row1['tags'];?>" name="tags" class="form-control" >
                             </div>
 
                             <div class="input-group">
 										<span class="input-group-addon">
 											<i class="material-icons">account_balance</i>
 										</span>
-                                <input type="text" value="<?php echo $row1['tags'];?>" name="tags" class="form-control" >
+                                <input type="file" name="image" class="form-control">
+                            </div>
+
+                            <div class="input-group">
+										<span class="input-group-addon">
+											<i class="material-icons">account_balance</i>
+										</span>
+                                <textarea name="content" rows="6" cols="40"><?php echo $row1['content'];?></textarea>
                             </div>
                         </div>
                     </form>
                     <div class="modal-footer">
                         <button style="margin: 5px" id="serialize" name="submit" class="btn btn-primary btn-md" onclick="updatePost();">Update</button>
+                        <button style="margin: 5px" type="button" class="btn btn-danger btn-md" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+<?php } ?>
+
+<?php
+if(isset($_POST['user']) ){
+    $id = $_POST['user'];
+    $query = "SELECT * FROM users";
+    $user = $db->select($query);
+//
+    $select_user = "SELECT * FROM users where user_id = '$id' ";
+    $sel = $db->select($select_user);
+    $row1 = $sel->fetch_array();
+    ?>
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <!--                    <button type="button" class="close" data-dismiss="modal">&times;</button>-->
+                    <h4 class="modal-title" style="text-align: center">Edit Users</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form" role="form" method="get" >
+                        <input type="hidden" name="EditUser" value="">
+                        <input type="hidden" name="user_id" value="<?php echo $row1['user_id'];?>">
+
+                        <div class="content">
+
+                            <div class="input-group">
+										<span class="input-group-addon">
+											<i class="material-icons">account_balance</i>
+										</span>
+                                <input type="text" value="<?php echo $row1['username'];?>" name="username" class="form-control">
+                            </div>
+
+                            <div class="input-group">
+										<span class="input-group-addon">
+
+											<i class="material-icons">account_balance</i>
+										</span>
+
+                                <input type="text" value="<?php echo $row1['email'];?>" name="email" class="form-control">
+                            </div>
+
+                            <div class="input-group">
+										<span class="input-group-addon">
+											<i class="material-icons">account_balance</i>
+										</span>
+                                <input type="text" value="<?php echo $row1['password'];?>" name="password" class="form-control" >
+                            </div>
+                        </div>
+                    </form>
+                    <div class="modal-footer">
+                        <button style="margin: 5px" id="serialize" name="submit" class="btn btn-primary btn-md" onclick="updateUser();">Update</button>
                         <button style="margin: 5px" type="button" class="btn btn-danger btn-md" data-dismiss="modal">Close</button>
                     </div>
                 </div>

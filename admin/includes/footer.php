@@ -1,9 +1,9 @@
- <footer class="blog-footer">
-      <p>Blog template built for <a href="https://getbootstrap.com">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
-      <p>
+<footer class="blog-footer">
+    <p>Blog built for <a href="https://keystrokez.org">keystrokez.org</a> by <a href="https://facebook.com/kingCobbina">David Legend</a>.</p>
+    <p>
         <a href="#">Back to top</a>
-      </p>
-    </footer>
+    </p>
+</footer>
 
  </body>
     <!-- Bootstrap core JavaScript
@@ -43,6 +43,17 @@
                  }
              });
          }
+         function editUser(id){
+             $.ajax({
+                 url: "includes/modal.php",
+                 type: "POST",
+                 data: "user="+id,
+                 success: function(msg){
+                     $("#modal").html(msg);
+                     $("#myModal").modal('show');
+                 }
+             });
+         }
          function update() {
              var data = $('form').serialize();
              $.ajax({
@@ -66,8 +77,24 @@
                  type: 'get',
                  data :data,
                  success: function (output) {
-//                     alert(output);
+                     alert(output);
                      swal("Added", "Post has been Updated.", "success");
+                     setTimeout(reload, 1000);
+                     function reload(){
+                         window.location.href=output;
+                     }
+                 }
+             });
+         }
+         function updateUser() {
+             var data = $('form').serialize();
+             $.ajax({
+                 url: 'auth/update.php',
+                 type: 'get',
+                 data :data,
+                 success: function (output) {
+//                     alert(output);
+                     swal("Added", "User Details have been Updated.", "success");
                      setTimeout(reload, 1000);
                      function reload(){
                          window.location.href=output;
