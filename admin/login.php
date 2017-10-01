@@ -1,5 +1,4 @@
 <?php session_start();
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -77,7 +76,7 @@
                                 <span class="input-group-addon">
                                     <i class="now-ui-icons users_circle-08"></i>
                                 </span>
-                            <input type="email" name="email" class="form-control" placeholder="jondoe@example.com">
+                            <input type="email" name="email" class="form-control" placeholder="enter email...">
                         </div>
                         <div class="input-group form-group-no-border input-lg">
                                 <span class="input-group-addon">
